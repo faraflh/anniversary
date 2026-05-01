@@ -1,0 +1,1431 @@
+:root {
+    --mint: #30364F;
+    --sky: #ACBAC4;
+    --coral: #E1D9BC;
+    --peach: #F0F0DB;
+    --white: #F0F0DB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Indie Flower', cursive; /* Tipografi Kode 1 */
+    background: #30364F; /* Tema Warna Kode 2 */
+    color: #eee;
+    overflow-x: hidden;
+}
+
+/* Splash Screen */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #30364F 0%, #ACBAC4 50%, #E1D9BC 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.splash-title {
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #ACBAC4, #E1D9BC, #F0F0DB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 1s ease;
+}
+
+.pin-pad {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.pin-display {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pin-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.pin-dot.filled {
+    background: #E1D9BC;
+    transform: scale(1.2);
+}
+
+.pin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-items: center;
+}
+
+.pin-btn {
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Indie Flower', cursive;
+}
+
+.pin-btn:hover {
+    background: rgba(225, 217, 188, 0.2);
+    border-color: #E1D9BC;
+    transform: scale(1.1);
+}
+
+.pin-btn:active {
+    transform: scale(0.95);
+}
+
+.pin-input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #E1D9BC;
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.pin-input::placeholder {
+    color: rgba(225, 217, 188, 0.35);
+    letter-spacing: 0.5rem;
+}
+
+.pin-input:focus {
+    border-color: #E1D9BC;
+    background: rgba(225, 217, 188, 0.08);
+    box-shadow: 0 0 0 4px rgba(225, 217, 188, 0.15);
+}
+
+.pin-input.shake {
+    animation: shake 0.45s ease;
+    border-color: #f0a0a0;
+}
+
+.pin-error {
+    color: #E1D9BC;
+    font-size: 0.9rem;
+    min-height: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.pin-hint {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+}
+
+/* Main Content */
+#main-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#main-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* Background Music Control */
+.music-control {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #E1D9BC, #ACBAC4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(225, 217, 188, 0.4);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+}
+
+.music-control.playing::before {
+    content: '🔊';
+    font-size: 1.5rem;
+}
+
+.music-control.paused::before {
+    content: '🔇';
+    font-size: 1.5rem;
+}
+
+/* Hero Section with Counter */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #30364F 0%, #ACBAC4 50%, #30364F 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="50%" font-size="40" text-anchor="middle" fill="rgba(225,217,188,0.03)">♡</text></svg>') repeat;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100px); }
+}
+
+.hero-title {
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #E1D9BC, #F0F0DB, #E1D9BC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 1s ease;
+}
+
+.hero-subtitle {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5rem;
+    color: #677083bf;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1.5s ease;
+}
+
+.counter-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease;
+}
+
+.counter-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-10px);
+    border-color: #E1D9BC;
+    box-shadow: 0 10px 30px rgba(225, 217, 188, 0.3);
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #E1D9BC;
+    font-family: 'Indie Flower', cursive;
+}
+
+.counter-label {
+    font-size: 1rem;
+    color: #ACBAC4;
+    margin-top: 0.5rem;
+}
+
+/* Sections */
+section {
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #E1D9BC;
+    position: relative;
+    animation: fadeInOnScroll 0.8s ease;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #E1D9BC, transparent);
+    margin: 1rem auto;
+}
+
+/* Photo Gallery (Cutouts Grid Design - 3x2) */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Memaksa persis 3 kolom */
+    gap: 40px;
+    margin-bottom: 3rem;
+}
+
+/* Penyesuaian untuk layar yang lebih kecil (Tablet/HP) */
+@media (max-width: 992px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: 1fr; /* 1 kolom untuk HP */
+    }
+}
+
+.photo-card {
+    position: relative;
+    animation: fadeInOnScroll 0.8s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: scale(1.05) rotate(-2deg);
+    z-index: 10;
+}
+
+.photo-wrapper {
+    background: #ffffff; /* Warna polaroid tetap putih agar foto menonjol */
+    padding: 15px;
+    border: 3px solid;
+    border-radius: 10px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.3); /* Hard shadow ala scrapbook */
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Rotasi dan warna border bergantian menggunakan warna Kode 2 */
+.photo-card:nth-child(odd) .photo-wrapper {
+    border-color: #E1D9BC;
+    transform: rotate(-2deg);
+}
+
+.photo-card:nth-child(even) .photo-wrapper {
+    border-color: #ACBAC4;
+    transform: rotate(2deg);
+}
+
+.photo-card:hover .photo-wrapper {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.photo-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    filter: sepia(0.1);
+}
+
+.photo-caption {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+}
+
+/* Washi Tape (Pita Perekat) */
+.washi-tape-cutout {
+    position: absolute;
+    top: -12px;
+    left: 20%;
+    width: 60%;
+    height: 25px;
+    opacity: 0.8;
+    z-index: 5;
+}
+
+/* Pola Washi Tape menggunakan warna Kode 2 */
+.photo-card:nth-child(odd) .washi-tape-cutout {
+    background: repeating-linear-gradient(45deg, #E1D9BC, #E1D9BC 10px, #ACBAC4 10px, #ACBAC4 20px);
+}
+.photo-card:nth-child(even) .washi-tape-cutout {
+    background: repeating-linear-gradient(-45deg, #ACBAC4, #ACBAC4 10px, #F0F0DB 10px, #F0F0DB 20px);
+}
+
+/* Sticky Note Scrapbook Style */
+.sticky-note {
+    position: absolute;
+    background: #F0F0DB;
+    padding: 15px;
+    min-width: 130px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transform: rotate(-3deg);
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.1rem;
+    color: #333;
+    z-index: 10;
+}
+
+.sticky-note::before {
+    content: '📌';
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 1.5rem;
+}
+
+/* Photo Strips (Scrapbook Scattered Style) */
+.photo-strips-container {
+    position: relative;
+    width: 95%;
+    height: 920px;
+    margin: 0 auto;
+    background-color: #d2a679;
+    background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.07) 2px, transparent 2px),
+        radial-gradient(rgba(0, 0, 0, 0.07) 2px, transparent 2px),
+        radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+    background-size: 16px 16px, 16px 16px, 24px 24px;
+    background-position: 0 0, 8px 8px, 12px 12px;
+
+    /* Bingkai Kayu Papan */
+    border: 18px solid #704e37;
+    border-radius: 12px;
+
+    /* Efek Bayangan 3D */
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6),        /* Bayangan papan jatuh ke dinding */
+        inset 0 10px 25px rgba(0, 0, 0, 0.6);  /* Bayangan bingkai ke bagian dalam papan */
+}
+
+/* 3. Responsive biar bingkai nggak ketebalan pas dibuka di HP */
+@media (max-width: 768px) {
+    .photo-strips-container {
+        border-width: 10px;
+    }
+}
+
+.photo-strip {
+    background: #F0F0DB;
+    padding: 10px 10px 20px;
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    position: absolute;
+    animation: popIn 0.8s ease forwards;
+    opacity: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
+    cursor: pointer;
+    z-index: 5;
+    width: 200px;
+}
+
+.photo-strip:hover {
+    z-index: 30;
+    transform: scale(1.08) rotate(0deg) !important;
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.55);
+}
+
+/* Scattered scrapbook positions - all gently rotated, overlapping */
+.photo-strip.strip-1 {
+    --strip-rotate: -7deg;
+    top: 160px;
+    left: 8%;
+    transform: rotate(-9deg);
+    animation-delay: 0.1s;
+}
+
+.photo-strip.strip-2 {
+    --strip-rotate: 7deg;
+    top: 60px;
+    right: 6%;
+    transform: rotate(7deg);
+    animation-delay: 0.25s;
+}
+
+.photo-strip.strip-3 {
+    --strip-rotate: -5deg;
+    bottom: 40px;
+    left: 58%;
+    transform: rotate(-5deg);
+    animation-delay: 0.4s;
+}
+
+.photo-strip.strip-4 {
+    --strip-rotate: 15deg;
+    bottom: 130px;
+    left: 28%;
+    transform: rotate(11deg);
+    animation-delay: 0.55s;
+}
+
+.strip-photo {
+    width: 100%;
+    height: 135px;
+    background: linear-gradient(135deg, #E1D9BC, #ACBAC4);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #30364F;
+    font-size: 1.1rem;
+    border: 2px solid #fff;
+    font-family: 'Caveat', cursive;
+    text-align: center;
+}
+
+.strip-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This acts like a crop so the image doesn't stretch */
+    display: block;
+    object-view-box: inset(20% 0 0 0);
+}
+
+.strip-photo:last-child {
+    margin-bottom: 0;
+}
+
+/* Scattered pinned notes around the photobooth */
+.pinned-note {
+    position: absolute;
+    min-width: 140px;
+    max-width: 180px;
+    padding: 12px 14px;
+    background: #F0F0DB;
+    color: #30364F;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1rem;
+    line-height: 1.35;
+    text-align: center;
+    box-shadow: 4px 6px 14px rgba(0, 0, 0, 0.35);
+    z-index: 12;
+    transform-origin: center;
+}
+
+.pinned-note::before {
+    content: '📌';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+}
+
+.pinned-note.note-a {
+    top: 136px;
+    left: 32%;
+    transform: rotate(-4deg);
+    background: #E1D9BC;
+}
+
+.pinned-note.note-b {
+    top: 62px;
+    right: 0%;
+    transform: rotate(
+16deg);
+    background: #ACBAC4;
+}
+
+.pinned-note.note-c {
+    top: 746px;
+    left: 8%;
+    transform: rotate(
+4deg);
+    background: #ACBAC4;
+    color: #30364F;
+}
+
+.pinned-note.note-d {
+    bottom: 210px;
+    right: 15%;
+    transform: rotate(
+360deg);
+    background: #F0F0DB;
+}
+
+.pinned-note.note-e {
+    bottom: 19px;
+    right: 26%;
+    transform: rotate(
+4deg);
+    background: #E1D9BC;
+}
+
+/* Mobile: stack everything vertically, no absolute positioning */
+@media (max-width: 768px) {
+    .strips-section { min-height: auto; padding: 2rem 1rem 3rem; }
+    .photo-strips-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem 0;
+    }
+
+    .photo-strip,
+    .photo-strip.strip-1,
+    .photo-strip.strip-2,
+    .photo-strip.strip-3,
+    .photo-strip.strip-4 {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        width: 220px;
+    }
+
+    .photo-strip.strip-1 { transform: rotate(-5deg); }
+    .photo-strip.strip-2 { transform: rotate(4deg); }
+    .photo-strip.strip-3 { transform: rotate(-3deg); }
+    .photo-strip.strip-4 { transform: rotate(6deg); }
+
+    .pinned-note,
+    .pinned-note.note-a,
+    .pinned-note.note-b,
+    .pinned-note.note-c,
+    .pinned-note.note-d,
+    .pinned-note.note-e {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0.5rem auto;
+    }
+}
+
+/* Letter Section */
+.letter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    animation: fadeInOnScroll 0.8s ease;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background: #ACBAC4;
+    /* clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%); */
+}
+
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 65%;
+    background: #E1D9BC;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.6s ease;
+    z-index: 2;
+}
+
+.envelope-wrapper.open .envelope-front {
+    transform: rotateX(-180deg);
+}
+
+.letter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s ease;
+    z-index: 100;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: #333;
+}
+
+.envelope-wrapper.open .letter {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.letter-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #E1D9BC;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.letter-close:hover {
+    transform: rotate(90deg);
+    background: #ACBAC4;
+}
+
+.letter-content {
+    font-family: 'Indie Flower', cursive; /* Tipografi Kode 1 */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Memories Section */
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.memory-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInOnScroll 0.8s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px);
+    border-color: #E1D9BC;
+    box-shadow: 0 10px 30px rgba(225, 217, 188, 0.3);
+}
+
+.memory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.memory-title {
+    font-size: 1.5rem;
+    color: #E1D9BC;
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+}
+
+.memory-date {
+    font-size: 0.9rem;
+    color: #ACBAC4;
+}
+
+.memory-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.memory-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    color: #ddd;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+.memory-card.active .memory-description {
+    max-height: 500px;
+}
+
+.memory-arrow {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.memory-card.active .memory-arrow {
+    transform: rotate(180deg);
+}
+
+/* Playlist Section */
+/* Container for the whole list */
+.playlist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Individual Row */
+.playlist-track {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.playlist-track:hover {
+    background-color: rgba(48, 54, 79, 0.1); /* Soft highlight on hover */
+}
+
+/* The Number */
+.track-number {
+    width: 30px;
+    text-align: center;
+    color: #ACBAC4;
+    font-size: 0.9rem;
+    margin-right: 10px;
+}
+
+/* Album Art & Play Button Overlay */
+.track-art-container {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.track-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.track-play-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+/* Show play button when hovering over the row OR when playing */
+.playlist-track:hover .track-play-btn,
+.playlist-track.playing .track-play-btn {
+    opacity: 1;
+}
+
+/* Song Info Column */
+.track-info {
+    flex: 1; /* Takes up main space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+
+.track-artist {
+    font-size: 0.85rem;
+    color: #ACBAC4;
+}
+
+/* Album Column (Hide on very small mobile screens) */
+.track-album {
+    flex: 1;
+    font-size: 0.85rem;
+    color: #ACBAC4;
+    margin-left: 15px;
+}
+
+@media (max-width: 600px) {
+    .track-album {
+        display: none;
+    }
+}
+
+/* Duration */
+.track-duration {
+    font-size: 0.85rem;
+    color: #ACBAC4;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+/* Quiz Section */
+.quiz-container {
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeInOnScroll 0.8s ease;
+}
+
+.quiz-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.quiz-card.active {
+    display: block;
+}
+
+.quiz-card.shake {
+    animation: shake 0.45s ease;
+}
+
+.quiz-progress {
+    text-align: center;
+    color: rgba(225, 217, 188, 0.75);
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.quiz-feedback {
+    margin-top: 1rem;
+    min-height: 1.6rem;
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-size: 1.25rem;
+    color: #f0a0a0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quiz-feedback.show {
+    opacity: 1;
+}
+
+.quiz-question {
+    font-size: 1.5rem;
+    color: #E1D9BC;
+    margin-bottom: 1.5rem;
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+}
+
+.quiz-option {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+    background: rgba(225, 217, 188, 0.1);
+    border-color: #E1D9BC;
+    transform: translateX(10px);
+}
+
+.quiz-option.selected {
+    background: rgba(225, 217, 188, 0.2);
+    border-color: #E1D9BC;
+}
+
+.quiz-option.correct {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4caf50;
+}
+
+.quiz-option.wrong {
+    background: rgba(244, 67, 54, 0.2);
+    border-color: #f44336;
+}
+
+.quiz-result {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(225, 217, 188, 0.1);
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+.quiz-score {
+    font-size: 3rem;
+    color: #E1D9BC;
+    font-family: 'Beth Ellen', cursive; /* Tipografi Kode 1 */
+}
+
+/* Video Section */
+.video-section {
+    animation: fadeInOnScroll 0.8s ease;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    height: 400px;
+    width: 50%;
+    transform: translateX(50%);
+}
+
+.video-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: #E1D9BC;
+    box-shadow: 0 10px 30px rgba(225, 217, 188, 0.3);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.video-caption {
+    padding: 1rem;
+    text-align: center;
+    color: #E1D9BC;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+    70% { opacity: 1; transform: scale(1.05) rotate(var(--strip-rotate, 0deg)); }
+    100% { opacity: 1; transform: scale(1) rotate(var(--strip-rotate, 0deg)); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.fadeInOnScroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.fadeInOnScroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3rem; }
+    .section-title { font-size: 2.5rem; }
+    .counter-container { grid-template-columns: repeat(2, 1fr); }
+    .photo-gallery { grid-template-columns: 1fr; }
+    .envelope-wrapper { width: 300px; height: 225px; }
+}
+
+/* Washi Tape Decoration */
+.washi-tape {
+    position: absolute;
+    height: 30px;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(225, 217, 188, 0.3),
+        rgba(225, 217, 188, 0.3) 10px,
+        rgba(172, 186, 196, 0.3) 10px,
+        rgba(172, 186, 196, 0.3) 20px
+    );
+    opacity: 0.6;
+}
+
+/* FITUR POPUP MODAL (Dari Kode 1, Disempurnakan Warna Kode 2) */
+/* Hide card descriptions (moved into click modal) */
+/* .photo-caption,
+.sticky-note,
+.memory-description, */
+.video-caption,
+/* .track-artist, */
+.memory-arrow {
+    display: none !important;
+}
+
+/* Keep pinned notes visible inside the Photobooth section */
+.strips-section .sticky-note {
+    display: block !important;
+}
+
+/* Card details modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 20000;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-card {
+    width: min(980px, 100%);
+    max-height: 85vh;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    padding: 1.25rem;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    font-family: 'Beth Ellen', cursive;
+    color: #E1D9BC; /* Tema Kode 2 */
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.modal-meta {
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+}
+
+.modal-close {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    border-color: rgba(225, 217, 188, 0.65); /* Tema Kode 2 */
+    transform: translateY(-1px);
+}
+
+.modal-strip {
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-strip::before,
+.modal-strip::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0.18) 10px,
+        transparent 10px,
+        transparent 18px
+    );
+    opacity: 0.7;
+}
+
+.modal-strip::before { top: 0; }
+.modal-strip::after { bottom: 0; }
+
+.modal-frame {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-frame-emoji {
+    font-size: 2.3rem;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.modal-notes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1rem;
+}
+
+.modal-note {
+    background: rgba(255, 255, 255, 0.92);
+    color: #2a2a2a;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    font-family: 'Indie Flower', cursive;
+    line-height: 1.4;
+    position: relative;
+    white-space: pre-line;
+}
+
+.modal-note::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 10px;
+    border-radius: 6px;
+    background: rgba(225, 217, 188, 0.35); /* Tema Kode 2 */
+}
+
+@media (max-width: 768px) {
+    .modal-title { font-size: 1.8rem; }
+    .modal-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .modal-notes { grid-template-columns: 1fr; }
+}
+
+/* Gaya Khusus Video Modal */
+.modal-video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    display: none; /* Sembunyi secara default */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Spotify-like Now Playing Layout */
+.modal-video-container.now-playing-container {
+    aspect-ratio: auto;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.now-playing-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.album-art {
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    animation: albumArtPulse 0.6s ease-out;
+}
+
+@keyframes albumArtPulse {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.now-playing-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.song-title {
+    font-family: 'Beth Ellen', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.song-artist {
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.song-duration {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.5rem;
+}
+
+/* Class untuk menyembunyikan strip saat mode video */
+.hide-strip { display: none !important; }
+.show-video { display: block !important; }

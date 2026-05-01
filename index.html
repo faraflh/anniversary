@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Caveat:wght@400;700&family=Patrick+Hand&family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="assets/If.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control playing" id="musicControl"></div>
+
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-title">Our Love Story 🌹</div>
+            <div class="pin-pad">
+                <div class="pin-display">
+                    <div class="pin-dot" data-dot="0"></div>
+                    <div class="pin-dot" data-dot="1"></div>
+                    <div class="pin-dot" data-dot="2"></div>
+                    <div class="pin-dot" data-dot="3"></div>
+                </div>
+                <div class="pin-grid"> 
+                    <button class="pin-btn" data-num="1">1</button> 
+                    <button class="pin-btn" data-num="2">2</button> 
+                    <button class="pin-btn" data-num="3">3</button> 
+                    <button class="pin-btn" data-num="4">4</button> 
+                    <button class="pin-btn" data-num="5">5</button> 
+                    <button class="pin-btn" data-num="6">6</button> 
+                    <button class="pin-btn" data-num="7">7</button> 
+                    <button class="pin-btn" data-num="8">8</button> 
+                    <button class="pin-btn" data-num="9">9</button> 
+                    <button class="pin-btn" data-num="clear">⌫</button> 
+                    <button class="pin-btn" data-num="0">0</button> 
+                    <button class="pin-btn" data-num="enter">✓</button> 
+                </div>
+                <div class="pin-error" id="pinError"></div>
+                <div class="pin-hint">Hint: Our special date ❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="hero-section">
+            <h1 class="hero-title">Happy Anniversary My Love 💝</h1>
+            <p class="hero-subtitle">Every moment with you is a treasure</p>
+            <div class="counter-container">
+                <div class="counter-box">
+                    <div class="counter-number" id="days">0</div>
+                    <div class="counter-label" style="color: #677083bf">Days</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="hours">0</div>
+                    <div class="counter-label" style="color: #677083bf">Hours</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="minutes">0</div>
+                    <div class="counter-label">Minutes</div>
+                </div>
+                <div class="counter-box">
+                    <div class="counter-number" id="seconds">0</div>
+                    <div class="counter-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title">Our Moments</h2>
+            <div class="photo-gallery">
+                <div class="photo-card" data-index="0">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="/assets/IMG_4138.JPG" alt="London memories" class="photo-img">
+                        <div class="photo-caption">Skipsi and coffee shops ☕</div>
+                    </div>
+                    <div class="sticky-note" style="bottom: -30px; right: -10px;">how we spend most of our times hehe</div>
+                </div>
+                
+                <div class="photo-card" data-index="1">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="assets/IMG_6709.JPG" alt="Summer memories" class="photo-img">
+                        <div class="photo-caption">Video game dates 🎮</div>
+                    </div>
+                    <div class="sticky-note" style="top: -20px; left: -20px; background: #ACBAC4; color: white;">so much fun :p</div>
+                </div>
+                
+                <div class="photo-card" data-index="2">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="https://i.pinimg.com/736x/86/b8/be/86b8bea1c772cf5c540e6f01e6acce59.jpg" alt="Summer memories" class="photo-img">
+                        <div class="photo-caption">Our funny moments! 🤪</div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-index="3">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="/assets/IMG_9232.JPG" alt="Summer memories" class="photo-img">
+                        <div class="photo-caption">Meows and purrs 🐈</div>
+                    </div>
+                    <div class="sticky-note" style="bottom: -20px; right: -20px;">let's adopt one</div>
+                </div>
+
+                <div class="photo-card" data-index="4">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="/assets/IMG_6959.JPG" alt="Summer memories" class="photo-img">
+                        <div class="photo-caption">Live laugh eat delish foods 🍽️</div>
+                    </div>
+                </div>
+
+                <div class="photo-card" data-index="5">
+                    <div class="washi-tape-cutout"></div>
+                    <div class="photo-wrapper">
+                        <img src="/assets/IMG_1876.JPG" alt="Summer memories" class="photo-img">
+                        <div class="photo-caption">Nailoong 💛🦖</div>
+                    </div>
+                    <div class="sticky-note" style="top: -30px; left: -10px; background: #ACBAC4; color: white;">Happy 6 months <3</div>
+                </div>
+            </div>
+
+            <!-- <div class="photo-strip">
+                <div class="strip-photo" style="background: rgba(225,217,188,0.2); display: flex; align-items: center; justify-content: center;">📷</div>
+                <div class="strip-photo" style="background: rgba(172,186,196,0.2); display: flex; align-items: center; justify-content: center;">📷</div>
+                <div class="strip-photo" style="background: rgba(240,240,219,0.2); display: flex; align-items: center; justify-content: center;">📷</div>
+                <div class="strip-photo" style="background: rgba(225,217,188,0.2); display: flex; align-items: center; justify-content: center;">📷</div>
+            </div> -->
+        </section>
+
+        <section class="strips-section" id="photostrips">
+            <div class="container">
+                <h2 class="section-title">🎞️ Photobooth Fun</h2>
+
+                <div class="photo-strips-container">
+                    <div class="photo-strip strip-1">
+                        <div class="strip-photo"><img src="/assets/IMG_4874.JPG" alt="Coffee Date"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_4878.JPG" alt="Matcha Time"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_4877.JPG" alt="Dessert"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_4875.JPG" alt="Yummy"></div>
+                    </div>
+
+                    <div class="photo-strip strip-2">
+                        <div class="strip-photo"><img src="/assets/IMG_5181.JPG" alt="Silly Faces"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_5184.JPG" alt="Giggles"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_5185.JPG" alt="Sweet Kiss"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_5187.JPG" alt="Forever Us"></div>
+                    </div>
+
+                    <div class="photo-strip strip-3">
+                        <div class="strip-photo"><img src="/assets/IMG_3939.JPG" alt="Dance Party"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_3950.JPG" alt="Love Eyes"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_3940.JPG" alt="Goofy Time"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_39562.JPG" alt="BFFs"></div>
+                    </div>
+
+                    <div class="photo-strip strip-4">
+                        <div class="strip-photo"><img src="/assets/IMG_6106.JPG" alt="Singing Loud"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_6105.JPG" alt="Road Trip"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_6107.JPG" alt="Lost Again"></div>
+                        <div class="strip-photo"><img src="/assets/IMG_4880.JPG" alt="Happy Always"></div>
+                    </div>
+
+                    <div class="pinned-note note-a">My gorgeous girl 😻</div>
+                    <div class="pinned-note note-b">Yeehaw?? ily 🤠😝</div>
+                    <div class="pinned-note note-c">Retro for the win 💃</div>
+                    <div class="pinned-note note-d">Couple of the year 🫦</div>
+                    <div class="pinned-note note-e">Starbies date ☕</div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 class="section-title">A Letter For You</h2>
+            <div class="letter-section">
+                <div class="envelope-wrapper" id="envelopeWrapper">
+                    <div class="envelope">
+                        <div class="envelope-back"></div>
+                        <div class="envelope-front"></div>
+                    </div>
+                    <div class="letter" id="letter">
+                        <button class="letter-close" id="letterClose">×</button>
+                        <div class="letter-content">
+                            <p>My Dearest Love,</p>
+                            <br>
+                            <p>happy 1 year of us being together! ga nyangka kita udah sampe sejauh ini. banyak banget moment-moment penting dan imut yang kita lewatin sama-sama, dan sebagian besar dari itu adalah first buat aku maupun kamu. i wouldn’t want to go through all that with anyone other than you.</p>
+                            <br>
+                            <p>you’re the only person i’ve ever loved so deeply. you’re the only person i’ve ever kissed. you’re the only person i feel safe being vulnerable with. you’re the first person i turn to when something good or bad happens. you’re the first person i think about when i wake up in the morning. you’re the only person in my head when i drift off to sleep. you’re the one and only person i want to be with today, tomorrow, and forever.</p>
+                            <br>
+                            <p>sometimes i still look at you and just think, how did i get so lucky? i still can’t believe i get to end up with such an amazing, beautiful girl like you. you’re strong, kind, fierce, but at the same time, you have such a soft and caring heart. you love to tease me a lot, and the funny thing is, i always fall for it every single time.</p>
+                            <br>
+                            <p>i know the road ahead might not always be perfectly smooth, but as long as i get to hold your hand, i'm not afraid. thank you for your endless patience, for dealing with my weird antics, and for loving me exactly the way you do.</p>
+                            <br>
+                            <p>thank you for being my partner, my safe space, my best friend, and my everything. here's to all the memories we've made and all the adventures still to come.</p>
+                            <br>
+                            <p>i love you so much, more than words can express. happy anniversary, baby imut!</p>
+                            <br>
+                            <p style="text-align: right;">Forever yours,<br>Faw ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Our Favorite Memories</h2>
+            <div class="memories-grid">
+                <div class="memory-card" data-memory="0">
+                    <div class="memory-icon">🤝</div>
+                    <div class="memory-header">
+                        <div class="memory-title">First Meet & Date(s)</div>
+                        <div class="memory-date">Aug 9, 2024; Apr 11 & 23, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+                <div class="memory-card" data-memory="1">
+                    <div class="memory-icon">😽</div>
+                    <div class="memory-header">
+                        <div class="memory-title">First Kiss</div>
+                        <div class="memory-date">April 30, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+                <div class="memory-card" data-memory="2">
+                    <div class="memory-icon">💘💐</div>
+                    <div class="memory-header">
+                        <div class="memory-title">It's <br> Official!!</div>
+                        <div class="memory-date">May 2, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="3">
+                    <div class="memory-icon">🍿</div>
+                    <div class="memory-header">
+                        <div class="memory-title">First Movie Date</div>
+                        <div class="memory-date">May 2, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+                <div class="memory-card" data-memory="4">
+                    <div class="memory-icon">🛝</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Milkyverse</div>
+                        <div class="memory-date">June 19, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+                <div class="memory-card" data-memory="5">
+                    <div class="memory-icon">🎂</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Ecak's (Early) Birthday</div>
+                        <div class="memory-date">July 17, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+                <div class="memory-card" data-memory="6">
+                    <div class="memory-icon">🧸</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Lego Dates</div>
+                        <div class="memory-date">July 2025-??</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="7">
+                    <div class="memory-icon">🎂</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Faw's Birthday</div>
+                        <div class="memory-date">Sep 19, 2025</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="8">
+                    <div class="memory-icon">🎂</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Val's Day</div>
+                        <div class="memory-date">Feb 14, 2026</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="9">
+                    <div class="memory-icon">🍽️</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Iftar</div>
+                        <div class="memory-date">March 2026</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="10">
+                    <div class="memory-icon">🎓</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Seminar</div>
+                        <div class="memory-date">2025-2026</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+                
+                <div class="memory-card" data-memory="11">
+                    <div class="memory-icon">🍨</div>
+                    <div class="memory-header">
+                        <div class="memory-title">Gelato Date</div>
+                        <div class="memory-date">March 29, 2026</div>
+                    </div>
+                    <div class="memory-description">
+                    </div>
+                    <div class="memory-arrow">▼</div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Our Playlist 🎵</h2>
+            <div class="playlist-container">
+                <div class="playlist-track" data-track="1">
+                    <div class="track-number">1</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273318443aab3531a0558e79a4d" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Begin Again (Taylor's Version)</div>
+                        <div class="track-artist">Taylor Swift</div>
+                    </div>
+                    <div class="track-album">is this play about us?</div>
+                    <div class="track-duration">3:58</div>
+                    <audio src="/assets/Begin Again (Taylor's Version).mp3"></audio>
+                </div>
+
+                <div class="playlist-track" data-track="2" data-cover="/assets/our-song-2-cover.jpg">
+                    <div class="track-number">2</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273af28c3161d272af6c015131c" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Tsunami</div>
+                        <div class="track-artist">NIKI</div>
+                    </div>
+                    <div class="track-album">our first hug song 🥺</div>
+                    <div class="track-duration">3:51</div>
+                    <audio src="/assets/Tsunami_spotdown.org.mp3"></audio>
+                </div>
+
+                <div class="playlist-track" data-track="3" data-cover="https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5">
+                    <div class="track-number">3</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Out of My League</div>
+                        <div class="track-artist">LANY</div>
+                    </div>
+                    <div class="track-album">hehehe :3</div>
+                    <div class="track-duration">3:26</div>
+                    <audio src="/assets/Out Of My League_spotdown.org.mp3"></audio>
+                </div>
+
+                <div class="playlist-track" data-track="4" data-cover="https://i.scdn.co/image/ab67616d0000b273a74b5540eb5322f0bca74c7d">
+                    <div class="track-number">4</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273a74b5540eb5322f0bca74c7d" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Home</div>
+                        <div class="track-artist">Bruno Major</div>
+                    </div>
+                    <div class="track-album">you feel like home</div>
+                    <div class="track-duration">3:20</div>
+                    <audio src="/assets/Home_spotdown.org.mp3"></audio>
+                </div>
+
+                <div class="playlist-track" data-track="5" data-cover="https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca">
+                    <div class="track-number">5</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273eda9478c39a21e1cdc6609ca" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Iris</div>
+                        <div class="track-artist">The Goo Goo Dolls</div>
+                    </div>
+                    <div class="track-album">🥺🌹</div>
+                    <div class="track-duration">4:49</div>
+                    <audio src="/assets/Iris_spotdown.org.mp3"></audio>
+                </div>
+                
+                <div class="playlist-track" data-track="6" data-cover="http://i.scdn.co/image/ab67616d0000b2730df7dec70511dd4f2e69dc34">
+                    <div class="track-number">6</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2730df7dec70511dd4f2e69dc34" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Sempurna</div>
+                        <div class="track-artist">Andra & The Backbone</div>
+                    </div>
+                    <div class="track-album">do i even need to say it?</div>
+                    <div class="track-duration">4:28</div>
+                    <audio src="/assets/Sempurna_spotdown.org.mp3"></audio>
+                </div>
+                
+                <div class="playlist-track" data-track="7" data-cover="https://i.scdn.co/image/ab67616d0000b273afd6d755b6ecf2fa49f2fc70">
+                    <div class="track-number">7</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273afd6d755b6ecf2fa49f2fc70" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Last Forever</div>
+                        <div class="track-artist">LANY</div>
+                    </div>
+                    <div class="track-album">because you're my last forever</div>
+                    <div class="track-duration">3:43</div>
+                    <audio src="/assets/Last Forever_spotdown.org.mp3"></audio>
+                </div>
+                
+                <div class="playlist-track" data-track="8" data-cover="https://i.scdn.co/image/ab67616d0000b273e321a69d7454d9365c667187">
+                    <div class="track-number">8</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273e321a69d7454d9365c667187" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">The Most Beautiful Thing</div>
+                        <div class="track-artist">Bruno Major</div>
+                    </div>
+                    <div class="track-album">you ARE the most beautiful thing</div>
+                    <div class="track-duration">3:55</div>
+                    <audio src="/assets/The Most Beautiful Thing_spotdown.org.mp3"></audio>
+                </div>
+                
+                <div class="playlist-track" data-track="7" data-cover="https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a">
+                    <div class="track-number">9</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Sparks</div>
+                        <div class="track-artist">Coldplay</div>
+                    </div>
+                    <div class="track-album">a song we cuddled to a lot</div>
+                    <div class="track-duration">3:47</div>
+                    <audio src="/assets/Sparks_spotdown.org.mp3"></audio>
+                </div>
+                
+                <div class="playlist-track" data-track="8" data-cover="https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5">
+                    <div class="track-number">10</div>
+                    <div class="track-art-container">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2738d013d6d163279f56f54c7b5" alt="Cover" class="track-cover">
+                        <button class="track-play-btn">▶</button>
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">No</div>
+                        <div class="track-artist">LANY</div>
+                    </div>
+                    <div class="track-album">i literally can't say no to you</div>
+                    <div class="track-duration">3:47</div>
+                    <audio src="/assets/LANY - No (SPOTISAVER).mp3"></audio>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">How Well Do You Know Us? 💭</h2>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress" id="quizProgress">Question 1 of 4</div>
+
+                <div class="quiz-card active" data-question="1">
+                    <div class="quiz-question">Where was our first date?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">Solter</div>
+                        <div class="quiz-option" data-answer="wrong">Lakosa Vol 2</div>
+                        <div class="quiz-option" data-answer="wrong">Leton</div>
+                        <div class="quiz-option" data-answer="correct">Lakosa Vol 1</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-card" data-question="2">
+                    <div class="quiz-question">When did we meet exactly?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">April 23, 2025</div>
+                        <div class="quiz-option" data-answer="correct">August 9, 2024</div>
+                        <div class="quiz-option" data-answer="wrong">April 11, 2025</div>
+                        <div class="quiz-option" data-answer="wrong">August 15, 2024</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-card" data-question="3">
+                    <div class="quiz-question">What's our favorite thing to do together?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">Buying foods</div>
+                        <div class="quiz-option" data-answer="wrong">Watching movies</div>
+                        <div class="quiz-option" data-answer="correct">Everything! Just being together</div>
+                        <div class="quiz-option" data-answer="wrong">Gaming</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-card" data-question="4">
+                    <div class="quiz-question">What makes our relationship special?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-answer="wrong">We never fight</div>
+                        <div class="quiz-option" data-answer="correct">We have some invisible strings tying us together </div>
+                        <div class="quiz-option" data-answer="wrong">We like the same things</div>
+                        <div class="quiz-option" data-answer="wrong">We've known each other forever</div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+            <div class="quiz-result" id="quizResult" style="display: none;">
+                <div class="quiz-score" id="quizScore">4/4</div>
+                <p>You know us so well! 💕</p>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2 class="section-title">Our Video Memories 🎬</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">🎥</div>
+                    <div class="video-caption">glimpses of our journey in a year 😋</div>
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; padding: 3rem 2rem;">
+            <div style="font-family: 'Beth Ellen', cursive; font-size: 2rem; color: #E1D9BC; margin-bottom: 1rem;">
+                Thank you for being my everything 💕
+            </div>
+            <div style="color: #ACBAC4;">
+                Here's to forever and always
+            </div>
+        </section>
+    </div>
+
+    <div class="modal-overlay" id="cardModal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title" id="modalTitle">Details</div>
+                    <div class="modal-meta" id="modalMeta"></div>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="Close">x</button>
+            </div>
+            <div class="modal-strip" id="modalStrip"></div>
+            <div class="modal-notes" id="modalNotes"></div>
+        </div>
+    </div>
+
+    <script>
+        // Pin Pad Logic (input-driven: auto-check as user types)
+        const CORRECT_PIN = '2525'; 
+        let currentPin = '';
+
+        const pinButtons = document.querySelectorAll('.pin-btn');
+        const pinDots = document.querySelectorAll('.pin-dot');
+        const pinError = document.getElementById('pinError');
+        const splashScreen = document.getElementById('splash-screen');
+        const mainContent = document.getElementById('main-content');
+
+        pinButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const num = btn.dataset.num;
+
+                if (num === 'clear') {
+                    currentPin = '';
+                    updatePinDisplay();
+                    pinError.textContent = '';
+                    return;
+                }
+
+                // ❌ ignore enter button
+                if (num === 'enter') return;
+
+                if (currentPin.length < 4) {
+                    currentPin += num;
+                    updatePinDisplay();
+
+                    // ✅ AUTO CHECK
+                    if (currentPin.length === 4) {
+                        setTimeout(checkPin, 300);
+                    }
+                }
+            });
+        });
+
+        function updatePinDisplay() {
+            pinDots.forEach((dot, index) => {
+                dot.classList.toggle('filled', index < currentPin.length);
+            });
+        }
+
+        function checkPin() {
+            if (currentPin === CORRECT_PIN) {
+                splashScreen.classList.add('hidden');
+
+                setTimeout(() => {
+                    mainContent.classList.add('visible');
+                    startCounter();
+                    startBackgroundMusic();
+                }, 800);
+
+            } else {
+                pinError.textContent = 'Wrong PIN! Try again ❤️';
+
+                // ❗ reset with animation feel
+                setTimeout(() => {
+                    currentPin = '';
+                    updatePinDisplay();
+                    pinError.textContent = '';
+                }, 1200);
+            }
+        }
+        document.querySelector('.pin-pad').classList.add('shake');
+        setTimeout(() => {
+            document.querySelector('.pin-pad').classList.remove('shake');
+        }, 400);
+
+        // Counter Logic
+        function startCounter() {
+            const startDate = new Date('2025-05-02T00:00:00'); 
+
+            function updateCounter() {
+                const now = new Date();
+                const diff = now - startDate;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            }
+
+            updateCounter();
+            setInterval(updateCounter, 1000);
+        }
+
+        // Background Music Control
+        const bgMusic = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+        let isMusicPlaying = false;
+
+        function startBackgroundMusic() {
+            bgMusic.play().catch(() => {
+                isMusicPlaying = false;
+                musicControl.classList.remove('playing');
+                musicControl.classList.add('paused');
+            });
+            isMusicPlaying = true;
+        }
+
+        // Tombol BGM Utama
+        musicControl.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicControl.classList.remove('playing');
+                musicControl.classList.add('paused');
+            } else {
+                // Jika lagu playlist sedang nyala, matikan dulu sebelum BGM nyala
+                if (currentlyPlaying) {
+                    currentlyPlaying.pause();
+                    currentlyPlaying.closest('.playlist-track').classList.remove('playing');
+                    currentlyPlaying.closest('.playlist-track').querySelector('.track-play-btn').textContent = '▶';
+                    currentlyPlaying = null;
+                }
+                bgMusic.play();
+                musicControl.classList.remove('paused');
+                musicControl.classList.add('playing');
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+
+        // Letter Envelope
+        const envelopeWrapper = document.getElementById('envelopeWrapper');
+        const letterClose = document.getElementById('letterClose');
+
+        envelopeWrapper.addEventListener('click', (e) => {
+            if (e.target !== letterClose) {
+                envelopeWrapper.classList.toggle('open');
+            }
+        });
+
+        letterClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            envelopeWrapper.classList.remove('open');
+        });
+
+        // Card details modal (Popup Logic dari Kode 1)
+        const cardModal = document.getElementById('cardModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMeta = document.getElementById('modalMeta');
+        const modalStrip = document.getElementById('modalStrip');
+        const modalNotes = document.getElementById('modalNotes');
+
+        function tidyText(value) {
+            return (value || '').toString().replace(/\s+/g, ' ').trim();
+        }
+
+        function closeCardModal() {
+            cardModal.classList.remove('open');
+            cardModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            modalStrip.innerHTML = '';
+            modalNotes.innerHTML = '';
+            modalMeta.textContent = '';
+        }
+
+        function openCardModal({ type, title, meta, frames, notes, videoSrc, artist, duration, albumArt }) {
+            modalTitle.textContent = tidyText(title) || 'Details';
+            modalMeta.textContent = tidyText(meta);
+            
+            // Reset Tampilan
+            modalStrip.classList.remove('hide-strip');
+            modalVideoContainer.classList.remove('show-video');
+            modalVideoContainer.innerHTML = '';
+
+            if (type === 'video') {
+                // Mode Video: Tampilan Satu Layar
+                modalStrip.classList.add('hide-strip');
+                modalVideoContainer.classList.add('show-video');
+                modalVideoContainer.innerHTML = videoSrc 
+                    ? `<iframe src="${videoSrc}" width="100%" height="100%" allow="fullscreen" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="border: none; min-height: 300px; width: 100%; aspect-ratio: 16/9;"></iframe>`
+                    : `<div style="height:100%; display:flex; align-items:center; justify-content:center; color:#ccc;">Video belum ditambahkan 🎬</div>`;
+            } else if (type === 'playlist') {
+                // Mode Playlist: Spotify-like Now Playing Layout
+                const artHtml = albumArt 
+                    ? `<img src="${albumArt}" alt="${title} cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">` 
+                    : `🎵`;
+                modalStrip.classList.add('hide-strip');
+                modalVideoContainer.classList.add('show-video');
+                modalVideoContainer.classList.add('now-playing-container');
+                modalVideoContainer.innerHTML = `
+                    <div class="now-playing-layout">
+                        <div class="album-art" style="display: flex; align-items: center; justify-content: center; overflow: hidden; background: #eee; border-radius: 8px;">
+                            ${artHtml}
+                        </div>
+                        <div class="now-playing-info">
+                            <div class="song-title" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 5px;">${title}</div>
+                            <div class="song-artist" style="color: #666; margin-bottom: 5px;">${artist || 'Unknown Artist'}</div>
+                            <div class="song-duration" style="font-size: 0.9rem; color: #999;">${duration || '0:00'}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Mode Gallery & Memory: Tampilan Film Strip (4 Foto)
+                modalStrip.innerHTML = '';
+                (frames || []).slice(0, 4).forEach(frame => {
+                    const frameEl = document.createElement('div');
+                    frameEl.className = 'modal-frame';
+                    if (frame.type === 'img' && frame.src) {
+                        frameEl.innerHTML = `<img src="${frame.src}" alt="moment">`;
+                    } else {
+                        frameEl.innerHTML = `<div class="modal-frame-emoji">${frame.emoji || '📸'}</div>`;
+                    }
+                    modalStrip.appendChild(frameEl);
+                });
+            }
+
+            // Bagian Catatan/Notes
+            modalNotes.innerHTML = '';
+            (notes || []).forEach((noteText, idx) => {
+                const noteEl = document.createElement('div');
+                noteEl.className = 'modal-note';
+                noteEl.style.transform = `rotate(${(idx % 3 - 1) * 2}deg)`;
+                noteEl.textContent = noteText;
+                modalNotes.appendChild(noteEl);
+            });
+
+            cardModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        modalClose.addEventListener('click', closeCardModal);
+        cardModal.addEventListener('click', (e) => {
+            if (e.target === cardModal) closeCardModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cardModal.classList.contains('open')) {
+                closeCardModal();
+            }
+        });
+
+        // Photo cards -> modal
+        // --- DATA INPUT MANUAL PHOTO GALLERY ---
+        const galleryData = [
+            {
+                title: "Academically exhausted",
+                notes: ["when will it ends..."],
+                photos: ["assets/IMG_5387.JPG", "assets/IMG_3467.JPG", "assets/IMG_2257.JPG", "assets/IMG_5437.JPG"]
+            },
+            {
+                title: "Gaming all day",
+                notes: ["let's become a game streamer 👩🏻‍💻"],
+                photos: ["assets/IMG_7082.JPG", "assets/IMG_7086.JPG", "assets/IMG_7757.JPG", "assets/IMG_0327.JPG"]
+            },
+            {
+                title: "THAT trend 🙊",
+                notes: ["ecak sok maluuu"],
+                photos: ["assets/IMG_4057.JPG", "assets/IMG_4055.JPG", "assets/IMG_3227.JPG", "assets/IMG_3220.JPG"] // 4 Foto berbeda
+            },
+            {
+                title: "Meoooooow",
+                notes: ["when can we get one? me want kitties 🐱"],
+                photos: ["assets/IMG_9282.JPG", "assets/IMG_9310.JPG", "assets/IMG_9400.JPG", "assets/IMG_9266.JPG"]
+            },
+            {
+                title: "Nom nom 😋",
+                notes: ["we ate a lot..."],
+                photos: ["assets/IMG_7748.JPG", "assets/IMG_8082.JPG", "assets/IMG_0323.JPG", "assets/IMG_7238.JPG"] // 4 Foto berbeda
+            },
+            {
+                title: "Nailong and 6 months 💛",
+                notes: ["we still haven't finished Fireboy and Watergirl 🙄"],
+                photos: ["assets/IMG_1830.JPG", "assets/IMG_1848.JPG", "assets/IMG_1862.JPG", "assets/IMG_1836.JPG"]
+            }
+            // Lanjutkan isi sampai index ke-5 untuk 6 kartu...
+        ];
+
+        // --- LISTENER UNTUK PHOTO GALLERY ---
+        const photoCards = document.querySelectorAll('.photo-card');
+        photoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const index = card.getAttribute('data-index');
+                const data = galleryData[index];
+                
+                if (data) {
+                    openCardModal({
+                        type: 'gallery',
+                        title: data.title,
+                        meta: 'Photo Strip',
+                        frames: [
+                            { type: 'img', src: data.photos[0] },
+                            { type: 'img', src: data.photos[1] },
+                            { type: 'img', src: data.photos[2] },
+                            { type: 'img', src: data.photos[3] }
+                        ],
+                        notes: data.notes
+                    });
+                } else {
+                    // Fallback jika data belum diisi di galleryData
+                    const title = card.querySelector('.photo-caption').textContent;
+                    openCardModal({
+                        type: 'gallery',
+                        title: title,
+                        meta: 'Photo Strip',
+                        frames: [{ type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }],
+                        notes: ["Foto belum diinput manual di script."]
+                    });
+                }
+            });
+        });
+
+        // Memory cards -> modal
+         const memoryData = [
+            {
+                notes: ["we don't have any clear photos of our faces from these moments.. but i still remember clearly the nervous excitement, the giddyness, the butterflies in my stomach, and how it felt when our hands met. i couldn't stop shaking the whole time. i couldn't even look at you—the most beautiful woman i've ever laid my eyese on—properly in the eyes."],
+                photos: ["assets/IMG_4435.JPG", "assets/IMG_3378.JPG", "assets/IMG_5272.PNG", "assets/IMG_5392.JPG"] // 4 Foto berbeda
+            },
+            {
+                notes: ["the day we had our first kiss. who would've thought we'd do it in the middle of a public park (in the car tho) :3 i still remember every second of our first kiss, your soft lips on mine, the desire, i guess we already fell so deep in love that day XD (that's the money you kept insisting was mine)"],
+                photos: ["assets/IMG_5957.JPG", "assets/IMG_6179.PNG", "assets/IMG_6180.PNG", "assets/IMG_6181.PNG"]
+            },
+            {
+                notes: ["i've prepared a whole speech the night before to ask you to be my girlfriend, but the words flew out the window when it was time to ask you for real. sorry for being such a loser hehe :( im so happy my first flower bouquet was for a very very special person <3 also, we had so much fun playing games that day!! \n\n p.s i love having playstation dates with you sooo much!"],
+                photos: ["assets/IMG_6059.JPG", "assets/IMG_6222.PNG", "assets/IMG_6223.PNG", "assets/IMG_6072.JPG"]
+            },
+            {
+                notes: ["i don't know how to explain it, but that day felt so intimate. i couldn't keep my hands off of you the whole time we were in there. \n\nfeaturing: THEEE cat"],
+                photos: ["https://i.pinimg.com/736x/46/8b/b9/468bb977114e8e1905f6a6e88ad07191.jpg", "assets/IMG_6225.PNG", "assets/IMG_6226.PNG", "assets/IMG_7313.JPG"]
+            },
+            {
+                notes: ["OUR FIRST BREAKFAST DATE YIPPIEEEE!! we had an amazing day that day didn't we 😋 we were sweating so much but it was fun!!!"],
+                photos: ["assets/IMG_0250.JPG", "assets/IMG_0134.JPG", "assets/IMG_0269.JPG", "assets/IMG_0289.JPG"]
+            },
+            {
+                notes: ["happy birthday my amazing girlfriend <3 im really sorry we didn't celebrate it on the actual date 🥺"],
+                photos: ["assets/IMG_2911.JPG", "assets/IMG_2919.JPG", "assets/IMG_3059.JPG", "assets/IMG_3135.JPG"]
+            },
+            {
+                notes: ["you looked SO SERIOUS whenever we were doing it. im still a bit sad we didn't finish it together 🥀"],
+                photos: ["assets/IMG_7176.JPG", "assets/IMG_3886.JPG", "assets/IMG_7911.JPG", "assets/IMG_8706.JPG"]
+            },
+            {
+                notes: ["thank you so much my love 🥺 it was the best birthday in my life and i love love LOVE the gifts. i love you sooooooooooo muchie 💋"],
+                photos: ["assets/IMG_9013.JPG", "assets/IMG_9103.JPG", "assets/IMG_9054.JPG", "assets/IMG_9110.JPG"]
+            },
+            {
+                notes: ["i love spoiling my girl hehehe. im so happy my first valentine is with you :P"],
+                photos: ["assets/IMG_9803.JPG", "assets/IMG_9734.JPG", "assets/IMG_0161.JPG", "assets/IMG_0064.JPG"]
+            },
+            {
+                notes: ["we look like strangers in the first pic 🙄 amazing food, amazing company, amazing girlfriend <3"],
+                photos: ["assets/IMG_2321.JPG", "assets/IMG_2200.JPG", "assets/IMG_2622.JPG", "assets/IMG_2611.JPG"]
+            },
+            {
+                notes: ["looking at this reminds me we've gone through so much together. so many important events. and im glad we were always by each other's sides"],
+                photos: ["assets/IMG_0339.JPG", "assets/IMG_6575.JPG", "assets/IMG_5226.JPG", "assets/IMG_5246.JPG"]
+            },
+            {
+                notes: ["cute photostrips and delicious gelato (which i already craved for months) 🤤 "],
+                photos: ["assets/IMG_3753.JPG", "assets/IMG_3741.JPG", "assets/IMG_3732.JPG", "assets/IMG_3802.JPG"]
+            }
+        ];
+        const memoryCards = document.querySelectorAll('.memory-card');
+        memoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const indexMem = card.getAttribute('data-memory');
+                const dataMem = memoryData[indexMem];
+
+                const title = tidyText(card.querySelector('.memory-title')?.textContent) || 'Memory';
+                const date = tidyText(card.querySelector('.memory-date')?.textContent);
+                // const description = tidyText(card.querySelector('.memory-description')?.textContent);
+
+                if (dataMem) {
+                    openCardModal({
+                        type: 'memory',
+                        title,
+                        meta: date ? `Memory - ${date}` : 'Memory',
+                        frames: [
+                            { type: 'img', src: dataMem.photos[0] },
+                            { type: 'img', src: dataMem.photos[1] },
+                            { type: 'img', src: dataMem.photos[2] },
+                            { type: 'img', src: dataMem.photos[3] }
+                        ],
+                        // notes: [description].filter(Boolean)
+                        notes: dataMem.notes
+                    });
+                } else {
+                    openCardModal({
+                        type: 'gallery',
+                        title: title,
+                        meta: date ? `Memory - ${date}` : 'Memory',
+                        frames: [{ type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }, { type: 'emoji', emoji: '📸' }],
+                        notes: ["Foto belum diinput manual di script."]
+                    });
+                }
+            });
+        });
+
+        // Video cards -> modal
+        const modalVideoContainer = document.createElement('div');
+        modalVideoContainer.className = 'modal-video-container';
+        document.querySelector('.modal-card').insertBefore(modalVideoContainer, modalStrip);
+
+        const videoCards = document.querySelectorAll('.video-card');
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const caption = card.querySelector('.video-caption').textContent;
+                openCardModal({
+                    type: 'video',
+                    title: 'Our Video',
+                    meta: 'Special Moment',
+                    videoSrc: 'https://drive.google.com/file/d/18epH7uKyRvJ_eQrt6bNtcgGZ89ZSwAW_/preview',
+                    notes: [caption]
+                });
+            });
+        });
+
+        // Playlist -> modal & control
+        let currentlyPlaying = null;
+        const playlistTracks = document.querySelectorAll('.playlist-track');
+
+        playlistTracks.forEach(track => {
+            const playBtn = track.querySelector('.track-play-btn');
+            const audio = track.querySelector('audio');
+
+            // Klik di mana saja pada track akan Play/Pause
+            track.addEventListener('click', () => {
+                
+                // Jika ada track lain yang sedang nyala, matikan dulu
+                if (currentlyPlaying && currentlyPlaying !== audio) {
+                    currentlyPlaying.pause();
+                    currentlyPlaying.currentTime = 0;
+                    currentlyPlaying.closest('.playlist-track').classList.remove('playing');
+                    currentlyPlaying.closest('.playlist-track').querySelector('.track-play-btn').textContent = '▶';
+                }
+
+                // Logika Play / Pause Track
+                if (audio.paused) {
+                    // Nyalakan Track Playlist
+                    audio.play().catch(() => {
+                        alert('Please add MP3 file for this track!');
+                    });
+                    track.classList.add('playing');
+                    playBtn.textContent = '⏸';
+                    currentlyPlaying = audio;
+
+                    // AUTO PAUSE BGM
+                    if (!bgMusic.paused) {
+                        bgMusic.pause();
+                        musicControl.classList.remove('playing');
+                        musicControl.classList.add('paused');
+                        isMusicPlaying = false;
+                    }
+                } else {
+                    // Matikan Track Playlist
+                    audio.pause();
+                    track.classList.remove('playing');
+                    playBtn.textContent = '▶';
+                    currentlyPlaying = null;
+
+                    // AUTO RESUME BGM
+                    bgMusic.play().catch(e => console.log("BGM autoplay dicegah browser"));
+                    musicControl.classList.remove('paused');
+                    musicControl.classList.add('playing');
+                    isMusicPlaying = true;
+                }
+            });
+
+            // Saat track selesai diputar (habis)
+            audio.addEventListener('ended', () => {
+                track.classList.remove('playing');
+                playBtn.textContent = '▶';
+                currentlyPlaying = null;
+
+                // AUTO RESUME BGM
+                bgMusic.play().catch(e => console.log("BGM autoplay dicegah browser"));
+                musicControl.classList.remove('paused');
+                musicControl.classList.add('playing');
+                isMusicPlaying = true;
+            });
+        });
+
+        // Quiz (one question at a time; advances only on correct answer)
+        const quizCards = Array.from(document.querySelectorAll('.quiz-card'));
+        const quizResult = document.getElementById('quizResult');
+        const quizScore = document.getElementById('quizScore');
+        const quizProgress = document.getElementById('quizProgress');
+        const totalQuestions = quizCards.length;
+        let currentQuizIndex = 0;
+        const wrongFeedbackMessages = [
+            'Not quite! Try again 💭',
+            'So close! Give it another shot 💕',
+            'Nope, one more try! ❤️',
+            'Hmm, not this one 💗'
+        ];
+
+        function showQuizCard(index) {
+            quizCards.forEach((card, i) => {
+                card.classList.toggle('active', i === index);
+            });
+            if (quizProgress) {
+                quizProgress.textContent = `Question ${index + 1} of ${totalQuestions}`;
+            }
+        }
+
+        quizCards.forEach((card, cardIndex) => {
+            const options = card.querySelectorAll('.quiz-option');
+            const feedback = card.querySelector('.quiz-feedback');
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Ignore clicks on options already locked as correct
+                    if (card.dataset.locked === 'true') return;
+
+                    const answer = option.dataset.answer;
+
+                    if (answer === 'correct') {
+                        card.dataset.locked = 'true';
+                        option.classList.remove('wrong');
+                        option.classList.add('selected', 'correct');
+                        if (feedback) {
+                            feedback.textContent = 'Correct! 💕';
+                            feedback.style.color = '#a8d8a8';
+                            feedback.classList.add('show');
+                        }
+
+                        setTimeout(() => {
+                            if (cardIndex === quizCards.length - 1) {
+                                quizScore.textContent = `${totalQuestions}/${totalQuestions}`;
+                                quizResult.style.display = 'block';
+                                card.classList.remove('active');
+                                if (quizProgress) quizProgress.style.display = 'none';
+                                quizResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            } else {
+                                currentQuizIndex = cardIndex + 1;
+                                showQuizCard(currentQuizIndex);
+                                // Reset the feedback/state on the just-completed card for cleanliness
+                                if (feedback) {
+                                    feedback.classList.remove('show');
+                                    feedback.textContent = '';
+                                    feedback.style.color = '';
+                                }
+                            }
+                        }, 900);
+                    } else {
+                        // Wrong answer: mark, shake, show feedback, allow retry
+                        option.classList.add('wrong');
+                        card.classList.remove('shake');
+                        // force reflow so the animation can replay
+                        void card.offsetWidth;
+                        card.classList.add('shake');
+
+                        if (feedback) {
+                            const msg = wrongFeedbackMessages[Math.floor(Math.random() * wrongFeedbackMessages.length)];
+                            feedback.textContent = msg;
+                            feedback.style.color = '#f0a0a0';
+                            feedback.classList.add('show');
+                        }
+
+                        setTimeout(() => {
+                            option.classList.remove('wrong');
+                        }, 900);
+                    }
+                });
+            });
+        });
+
+        showQuizCard(currentQuizIndex);
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.section-title, .photo-card, .memory-card, .playlist-container, .quiz-container, .video-section, .letter-section');
+            animatedElements.forEach(el => {
+                el.classList.add('fadeInOnScroll');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
